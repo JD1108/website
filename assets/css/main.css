@@ -240,6 +240,7 @@ input, select, textarea {
 		flex-wrap: wrap;
 		box-sizing: border-box;
 		align-items: stretch;
+		margin-bottom: 5%;
 	}
 
 		.row > * {
