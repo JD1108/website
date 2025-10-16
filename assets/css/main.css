@@ -2626,7 +2626,7 @@ input, select, textarea {
 			}
 
 			#main-wrapper, #footer-wrapper {
-				padding: 40px 30px 40px 30px;
+				padding: 40px 30px 0px 30px;
 			}
 
 		/* Logo */
