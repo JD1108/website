@@ -2691,7 +2691,6 @@ input, select, textarea {
 	.icon {
   text-decoration: none;
   border-bottom: none;
-  color:white
   font-size: 1.5em;       /* Größe der Icons */
   line-height: 1;
 }
@@ -2702,4 +2701,13 @@ input, select, textarea {
 
 .icon > .label {
   display: none;          /* Versteckt den Text im Icon */
+}
+/* GitHub-Icon dunkelgrau */
+.icon.fab.fa-github {
+  color: #333333;
+}
+
+/* E-Mail-Icon rot */
+.icon.far.fa-envelope {
+  color: #e74c3c;
 }
