@@ -2687,27 +2687,15 @@ input, select, textarea {
 			}
 
 	}
-	/*<test*/
-	.icon {
-  text-decoration: none;
-  border-bottom: none;
-  font-size: 1.5em;       /* Größe der Icons */
-  line-height: 1;
+/*<test*/
+.icon {
+	text-decoration: none;
+	border-bottom: none;
+	font-size: 1.5em;       /* Größe der Icons */
+	line-height: 1;
+	color:#FFFFFF;
 }
 
 .icon:hover {
   color: #1da1f2;         /* Beispiel: Hover-Farbe */
-}
-
-.icon > .label {
-  display: none;          /* Versteckt den Text im Icon */
-}
-/* GitHub-Icon dunkelgrau */
-.icon.fab.fa-github {
-  color: #333333;
-}
-
-/* E-Mail-Icon rot */
-.icon.far.fa-envelope {
-  color: #e74c3c;
 }
