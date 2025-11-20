@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robot Dog Leg Simulation</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+    canvas {
+      background: #222;
+      border: 2px solid #444;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Roboter-Hundebein Simulation</h1>
+
+  <canvas id="sim" width="500" height="500"></canvas>
+
+  <script>
+    const canvas = document.getElementById("sim");
+    const ctx = canvas.getContext("2d");
+
+    const upperLegLength = 150;
+    const lowerLegLength = 150;
+
+    let hipAngle = 0;
+    let kneeAngle = -30;
+    let t = 0;
+
+    function drawLeg() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const originX = 250;
+      const originY = 100;
+
+      // Automatisierte Bewegung: Sinusförmige Animation
+      hipAngle = 20 * Math.sin(t);
+      kneeAngle = -30 + 15 * Math.sin(t * 2);
+
+      t += 0.05;
+
+      // Calculate knee position
+      const kneeX = originX + upperLegLength * Math.sin(hipAngle * Math.PI / 180);
+      const kneeY = originY + upperLegLength * Math.cos(hipAngle * Math.PI / 180);
+
+      // Calculate foot position
+      const footX = kneeX + lowerLegLength * Math.sin((hipAngle + kneeAngle) * Math.PI / 180);
+      const footY = kneeY + lowerLegLength * Math.cos((hipAngle + kneeAngle) * Math.PI / 180);
+
+      ctx.lineWidth = 10;
+      ctx.lineCap = "round";
+      ctx.strokeStyle = "#0af";
+
+      // Hip to Knee
+      ctx.beginPath();
+      ctx.moveTo(originX, originY);
+      ctx.lineTo(kneeX, kneeY);
+      ctx.stroke();
+
+      // Knee to Foot
+      ctx.beginPath();
+      ctx.moveTo(kneeX, kneeY);
+      ctx.lineTo(footX, footY);
+      ctx.stroke();
+
+      requestAnimationFrame(drawLeg);
+    }
+
+    drawLeg();
+  </script>
+</body>
+</html>
