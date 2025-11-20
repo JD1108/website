@@ -1622,6 +1622,17 @@ input, select, textarea {
 				width: auto;
 			}
 
+	.image_in_text {
+		display: block;
+		margin: 0 0 2.5em 0;
+	}
+
+		.image_in_text img {
+			width: auto;
+			max-width: 100%;
+			border-radius: 8px;
+		}
+
 /* Button */
 
 	input[type="button"],
