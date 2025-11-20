@@ -1807,6 +1807,10 @@ input, select, textarea {
 
 		.box.feature {
 			padding: 0;
+			display: flex;
+    		flex-direction: column;
+    		height: 100%;
+			
 		}
 
 			.box.feature .inner {
@@ -1819,6 +1823,10 @@ input, select, textarea {
 
 			.box.feature p {
 				margin: 0;
+				display: -webkit-box;
+    			-webkit-line-clamp: 4; 
+    			-webkit-box-orient: vertical;
+    			overflow: hidden;
 			}
 
 			.box.feature .image {
