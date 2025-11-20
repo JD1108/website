@@ -131,10 +131,11 @@ input, select, textarea {
 			text-decoration: none;
 		}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1, h2,h3, h4, h5, h6 {
 		color: #444;
 		font-weight: 800;
 	}
+	
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 			color: inherit;
@@ -1485,7 +1486,29 @@ input, select, textarea {
 	footer {
 		margin: 2.5em 0 0 0;
 	}
-
+	article h2 {
+				background: #00028f;
+				color: #fff;
+				border-radius: 6px;
+				text-align:center;
+				padding: 0.5em;
+				margin-top:0.5em;
+			}
+	article h3 {
+				color: #00028f;
+				font-weight: 800;
+			}
+	
+	.title_pic {
+    height: 200px;          /* Höhe des Bildbereichs */
+    overflow: hidden;       /* überschüssiges Bild abschneiden */
+    display: block;
+	}
+	.title_pic img {
+    	width: 100%;
+    	height: 100%;
+    	object-fit: cover;      /* füllt den Bereich schön aus */
+	}
 /* Forms */
 
 	form label {
@@ -1819,6 +1842,8 @@ input, select, textarea {
 
 			.box.feature h2 {
 				font-size: 1.35em;
+				color: #00028f;
+				font-weight: 800;
 			}
 
 			.box.feature p {
@@ -2532,6 +2557,7 @@ input, select, textarea {
 				section.last, article.last {
 					margin-bottom: 0 !important;
 				}
+			
 
 		/* Image */
 
