@@ -96,10 +96,141 @@
 										There maybe will be more complex and faster walking gaits in future versions.
 									</p>
 									<h4>Inverse kinematic</h4>
-
-
-
-
+									<p>
+										For a smooth walking gait, the servo angles have to be calculated depending on the desired foot position. <br>
+										Therefore, an inverse kinematic for the legs was developed. Each leg has two degrees of freedom, which are controlled by two servos. <br>
+										The following figure shows the a model of one leg:
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/leg_basic.png"></img>		
+										</div>
+										The distance between hip and foot kann be calculated with the Pythagorean theorem:
+										<div style="text-align: center;">
+											<math xmlns="http://www.w3.org/1998/Math/MathML">
+												<mi>d</mi>
+												<mo>=</mo>
+												<msqrt>
+													<mrow>
+													<msup>
+														<mi>X</mi>
+														<mn>2</mn>
+													</msup>
+													<mo>+</mo>
+													<msup>
+														<mi>Y</mi>
+														<mn>2</mn>
+													</msup>
+													</mrow>
+												</msqrt>
+											</math>
+										</div>
+									If X and Y are the coordinates of the foot with respect to the hip, d is the distance between hip and foot. <br>
+									With the cosine law, the angles of the servos can be calculated:
+									<div style="text-align: center;">
+										<math xmlns="http://www.w3.org/1998/Math/MathML">
+											<msup><mi>d</mi><mn>2</mn></msup>
+											<mo>=</mo>
+											<msup>
+												<msub>
+													<mi>L</mi>
+													<mi>tight</mi>  
+												</msub>
+												<mn>2</mn>
+											</msup>
+											<mo>+</mo>
+											<msup>
+												<msub>
+													<mi>L</mi>
+													<mi>lower leg</mi>  
+												</msub>
+												<mn>2</mn>
+											</msup>
+											<mo>-</mo>
+											<mn>2</mn>
+											<mo>&#x2062;</mo> <!-- unsichtbares Multiplikationszeichen -->
+											<msub>
+												<mi>L</mi>
+												<mi>tight</mi>  
+											</msub>
+											<mo>&#x2062;</mo>
+											<msub>
+												<mi>L</mi>
+												<mi>lower leg</mi>  
+											</msub>
+											<mo>&#x2062;</mo>
+											<mi>cos</mi>
+											<mo>(</mo>
+											<msub>
+												<mi>&#945;</mi>
+												<mi>knee</mi>  
+											</msub>
+											<mo>)</mo>
+										</math>
+										<br>
+										<math xmlns="http://www.w3.org/1998/Math/MathML">
+											<msub>
+												<mi>&#945;</mi>
+												<mi>knee</mi>
+											</msub>
+											<mo>=</mo>
+											<mi>arccos</mi>
+											<mo>(</mo>
+												<mfrac>
+												<mrow>
+													<msup><msub><mi>L</mi><mi>tight</mi></msub><mn>2</mn></msup>
+													<mo>+</mo>
+													<msup><msub><mi>L</mi><mi>lowerleg</mi></msub><mn>2</mn></msup>
+													<mo>-</mo>
+													<msup><mi>d</mi><mn>2</mn></msup>
+												</mrow>
+												<mrow>
+													<mn>2</mn>
+													<mo>&#x2062;</mo>
+													<msub><mi>L</mi><mi>tight</mi></msub>
+													<mo>&#x2062;</mo>
+													<msub><mi>L</mi><mi>lowerleg</mi></msub>
+												</mrow>
+												</mfrac>
+											<mo>)</mo>
+										</math>
+									</div>
+									With the same idea, the angle of the hip can be calculated:
+									<div style="text-align: center;">
+										<math xmlns="http://www.w3.org/1998/Math/MathML">
+											<msub><mi>&#945;</mi><mi>hip</mi></msub>
+											<mo>=</mo>
+											<mi>arctan</mi>
+											<mo>(</mo>
+												<mfrac>
+												<mi>Y</mi>
+												<mi>X</mi>
+												</mfrac>
+											<mo>)</mo>
+											<mo>-</mo>
+											<mi>arccos</mi>
+											<mo>(</mo>
+												<mfrac>
+												<mrow>
+													<msup><msub><mi>L</mi><mi>tight</mi></msub><mn>2</mn></msup>
+													<mo>+</mo>
+													<msup><mi>d</mi><mn>2</mn></msup>
+													<mo>-</mo>
+													<msup><msub><mi>L</mi><mi>lowerleg</mi></msub><mn>2</mn></msup>
+												</mrow>
+												<mrow>
+													<mn>2</mn>
+													<mo>&#x2062;</mo>
+													<msub><mi>L</mi><mi>tight</mi></msub>
+													<mo>&#x2062;</mo>
+													<mi>d</mi>
+												</mrow>
+												</mfrac>
+											<mo>)</mo>
+										</math>
+										<br>
+									</div>
+										This are the formulas for the inverse kinematic of one leg.
+								</p>
+									<div style="height:6em"></div>
 									<p>This project was a cooperation with <a href="https://nora-1125.github.io/Website/">Nora</a>. Please check her website, too.</p>
 									<h3>License</h3>
 									<p>
