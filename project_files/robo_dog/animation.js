@@ -3,16 +3,16 @@ const ctx = canvas.getContext("2d");
 ctx.fillStyle="grey";
 
 
-const lT=200;
-const lL=400;
+const lT=100;
+const lL=200;
 const stepTime=3000;
-const startingPos=[100,500];
-const stepLength=200;
-const stepHeight=100;
+const startingPos=[50,250];
+const stepLength=100;
+const stepHeight=50;
 
 const frequency=20; //in Hz
 
-const hip =[250,50];
+const hips =[[150,50],[200,30],[400,50],[450,30],[250,50]];
 var footPos=[hip[0]+startingPos[0],hip[1]+startingPos[1]];
 
 
@@ -31,8 +31,7 @@ function inverseKinematics(pos) {
     const aK = Math.acos((lT**2 + lL**2 - d**2)/(2 * lL * lT));
     return [aH, aK];
 }
-function drawLeg(a) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function drawLeg(a, hip) {
     ctx.beginPath();
     ctx.moveTo(hip[0], hip[1]);
     const kneeX = hip[0]+lT * Math.cos(a[0]);
@@ -43,29 +42,48 @@ function drawLeg(a) {
     ctx.lineTo(footX, footY);
     ctx.stroke();
 }
-function trajectory(t) {
-    var x=0;
-    var y=0;
-    if (t<((3*stepTime)/4)){
-        x=startingPos[0]-((4*t/((3*stepTime)))*stepLength);
-        y=startingPos[1];
-    }else{
-        x=(startingPos[0]-stepLength)+(t-((3*stepTime)/4))*((4*stepLength)/stepTime);
-        y=startingPos[1]-stepHeight*Math.sin(((t-((3*stepTime)/4))*(Math.PI*4))/stepTime);
+function trajectory(time, phaseOffset) {
+    // Normierte Zeit 0…1
+    let phase = ((time / stepTime) + phaseOffset) % 1;
+
+    let x, y;
+
+    if (phase < 0.75) {
+        // Stützphase (Fuß am Boden)
+        x = startingPos[0] - (phase / 0.75) * stepLength;
+        y = startingPos[1];
+    } else {
+        // Schwungphase (Fuß hebt ab & schwingt nach vorne)
+        let p = (phase - 0.75) / 0.25;  // neu normiert: 0…1
+        x = (startingPos[0] - stepLength) + p * stepLength;
+        y = startingPos[1] - stepHeight * Math.sin(p * Math.PI);
     }
 
-    return [x,y];
-
+    return [x, y];
 }
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-async function animateSteps() {
+async function animateStepsFour() {
     for (let i = 0; i < 10; i++) {
         for (let t = 0; t < stepTime; t += 1000 / frequency) {
-            drawLeg(inverseKinematics(trajectory(t)));
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawLeg(inverseKinematics(trajectory(t,(1/4))), hips[0]); //RR
+            drawLeg(inverseKinematics(trajectory(t,(3/4))), hips[1]); //RL
+            drawLeg(inverseKinematics(trajectory(t,(2/4))), hips[2]); //FR
+            drawLeg(inverseKinematics(trajectory(t,0)), hips[3]); //FL
             await sleep(1000 / frequency);
         }
     }
 }
-animateSteps();
+async function animateStepsOne() {
+    for (let i = 0; i < 10; i++) {
+        for (let t = 0; t < stepTime; t += 1000 / frequency) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawLeg(inverseKinematics(trajectory(t,0)), hips[4]); 
+            await sleep(1000 / frequency);
+        }
+    }
+}
+//animateSteps();

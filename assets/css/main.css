@@ -1751,7 +1751,9 @@ input, select, textarea {
 			font-size: 2.25em;
 			padding: 0.8em 0.9em;
 		}
-
+		.butAni{
+			max-width:45%
+		}
 /* List */
 
 	ul {
@@ -2754,4 +2756,7 @@ input, select, textarea {
 }
 #contacts{
 	color:#FFFFFF
+}
+#ani{
+	background-color: #444;
 }

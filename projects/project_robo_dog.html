@@ -233,11 +233,19 @@
 									With these formulas, the servo angles can be calculated depending on the desired foot position.
 									So it is possible to define smooth trajectories for the feet during the walking gait.
 									</p>
-									<h3>Movement of one leg</h3>
+									<h3>Movement of the legs</h3>
 									<p>
-										<canvas id="ani" width="500" height="700"></canvas>
-										<script src="../project_files/robo_dog/animation.js"></script>
-									</p>
+										<div style="text-align: center;">
+											<canvas id="ani" width="500" height="300"></canvas>
+											<script src="../project_files/robo_dog/animation.js"></script>
+											<div class="control">
+											<!--<input type="checkbox" class="opts" value=1> 1 leg<br>
+											<input type="checkbox" class="opts" value=4> 4 legs<br>-->
+											<button class="butAni" onclick="animateStepsOne()">One Leg</button>
+											<button class="butAni" onclick="animateStepsFour()">Four Legs</button>
+											</div>
+										</div>
+									</p>	
 									<div style="height:6em"></div>
 									<p>This project was a cooperation with <a href="https://nora-1125.github.io/Website/">Nora</a>. Please check her website, too.</p>
 									<h3>License</h3>
