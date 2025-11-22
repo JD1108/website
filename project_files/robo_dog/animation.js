@@ -12,7 +12,7 @@ const stepHeight=20;
 
 const frequency=20; //in Hz
 
-const hips =[[150,25],[200,10],[370,25],[420,10],[250,25]];
+const hips =[[130,25],[180,10],[390,25],[440,10],[250,25]];
 
 
 
@@ -84,7 +84,7 @@ function drawLeg(a, hip,top) {
         }else{
             //right rear
             xCor=0;
-            yCor=60;    
+            yCor=190;    
             ctx.fillStyle="blue"
         }
     }else{
@@ -97,7 +97,7 @@ function drawLeg(a, hip,top) {
         }else{
             //right front
             xCor=0;
-            yCor=60;
+            yCor=190;
             ctx.fillStyle="yellow"
         }
     }
@@ -123,14 +123,14 @@ function drawLeg(a, hip,top) {
         ctx.fill();
         ctx.stroke();
         ctx.strokeStyle="yellow";
-        ctx.strokeRect(150,310,250,60);
+        ctx.strokeRect(150,310,220,190);
     }
     
 }
 function centerOfMass() {
     ctx.fillStyle="black";
     ctx.beginPath();
-    ctx.arc(275, 340, 5, 0, 2 * Math.PI);
+    ctx.arc(275, 310, 5, 0, 2 * Math.PI);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
