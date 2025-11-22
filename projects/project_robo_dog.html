@@ -80,7 +80,7 @@
 										The robotic dog is controlled by an ESP32 and the MG90S servos are controlled via a PCA9685 servo driver board. <br>
 										Following the owner is realized with the help of two RXB6 recievers which locate a 433 MHz transmitter held by the owner.
 									</p>
-									<h3>Software development</h3>
+									<h4>Software development</h4>
 									<h4>Walking Gait</h4>
 									<p>
 										The first version of the robotic dog has no interial measurement unit (IMU) and therefore no feedback control. Hence the walking gait had to be very stable and is only based on time. <br>
@@ -101,7 +101,7 @@
 										Therefore, an inverse kinematic for the legs was developed. Each leg has two degrees of freedom, which are controlled by two servos. <br>
 										The following figure shows the a model of one leg:
 										<div style="text-align: center;">
-											<img class="image_in_text" src="../images/robo_dog/leg_basic.png"></img>		
+											<img class="image_in_text" src="../images/robo_dog/leg_ik.png"></img>		
 										</div>
 										The distance between hip and foot kann be calculated with the Pythagorean theorem:
 										<div style="text-align: center;">
@@ -233,10 +233,13 @@
 									With these formulas, the servo angles can be calculated depending on the desired foot position.
 									So it is possible to define smooth trajectories for the feet during the walking gait.
 									</p>
-									<h3>Movement of the legs</h3>
+									<h4>Movement of the legs</h4>
 									<p>
+										The animation below shows either the movement of one leg or all four legs during the walking gait. <br>
+										As described above, the walking gait is divided into four phases. <br>
+										In each phase, one leg is lifted, moved forward and set down again, while the other three legs provide stability. <br>
 										<div style="text-align: center;">
-											<canvas id="ani" width="500" height="300"></canvas>
+											<canvas id="ani" width="500" height="400"></canvas>
 											<script src="../project_files/robo_dog/animation.js"></script>
 											<div class="control">
 											<!--<input type="checkbox" class="opts" value=1> 1 leg<br>

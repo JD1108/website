@@ -3,17 +3,17 @@ const ctx = canvas.getContext("2d");
 ctx.fillStyle="grey";
 
 
-const lT=100;
-const lL=200;
-const stepTime=3000;
-const startingPos=[50,250];
-const stepLength=100;
-const stepHeight=50;
+const lT=154;
+const lL=128;
+const stepTime=4000;
+const startingPos=[20,270];
+const stepLength=80;
+const stepHeight=20;
 
 const frequency=20; //in Hz
 
-const hips =[[150,50],[200,30],[400,50],[450,30],[250,50]];
-var footPos=[hip[0]+startingPos[0],hip[1]+startingPos[1]];
+const hips =[[150,25],[200,10],[400,25],[450,10],[250,25]];
+//var footPos=[hip[0]+startingPos[0],hip[1]+startingPos[1]];
 
 
 
@@ -38,25 +38,31 @@ function drawLeg(a, hip) {
     const kneeY = hip[1]+lT * Math.sin(a[0]);
     ctx.lineTo(kneeX, kneeY);
     const footX = kneeX + lL * Math.cos(a[0] - (Math.PI - a[1]));
-    const footY = kneeY + lL * Math.sin(a[0] - (Math.PI - a[1])); //-aK+(np.pi+aH)
+    const footY = kneeY + lL * Math.sin(a[0] - (Math.PI - a[1])); 
     ctx.lineTo(footX, footY);
     ctx.stroke();
 }
 function trajectory(time, phaseOffset) {
-    // Normierte Zeit 0…1
     let phase = ((time / stepTime) + phaseOffset) % 1;
 
     let x, y;
 
     if (phase < 0.75) {
-        // Stützphase (Fuß am Boden)
+        // Working phase
         x = startingPos[0] - (phase / 0.75) * stepLength;
         y = startingPos[1];
     } else {
-        // Schwungphase (Fuß hebt ab & schwingt nach vorne)
-        let p = (phase - 0.75) / 0.25;  // neu normiert: 0…1
-        x = (startingPos[0] - stepLength) + p * stepLength;
-        y = startingPos[1] - stepHeight * Math.sin(p * Math.PI);
+        // Lifting phase
+        let p = (phase - 0.75) / 0.25;  
+        p0 = startingPos[1];
+        p1 = startingPos[1] - 0.4 * stepHeight;
+        p2 = startingPos[1] - stepHeight;
+        p3 = startingPos[1]-   0.3 * stepHeight;
+        p4 = startingPos[1];
+
+        x = startingPos[0]-0.75*stepLength+ stepLength * (0.5 - 0.5 * Math.cos(Math.PI * p));
+        y = (1 - p) ** 4 * p0 +4 * (1 - p) ** 3 * p * p1 +6 * (1 - p) ** 2 * p ** 2 * p2 +4 * (1 - p) * p ** 3 * p3 + p** 4 * p4;
+       
     }
 
     return [x, y];
