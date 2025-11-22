@@ -196,36 +196,30 @@
 									With the same idea, the angle of the hip can be calculated:
 									<div style="text-align: center;">
 										<math xmlns="http://www.w3.org/1998/Math/MathML">
-											<msub><mi>&#945;</mi><mi>hip</mi></msub>
-											<mo>=</mo>
-											<mi>arctan</mi>
-											<mo>(</mo>
-												<mfrac>
-												<mi>Y</mi>
-												<mi>X</mi>
-												</mfrac>
-											<mo>)</mo>
-											<mo>-</mo>
-											<mi>arccos</mi>
-											<mo>(</mo>
-												<mfrac>
-												<mrow>
-													<msup><msub><mi>L</mi><mi>tight</mi></msub><mn>2</mn></msup>
-													<mo>+</mo>
-													<msup><mi>d</mi><mn>2</mn></msup>
-													<mo>-</mo>
-													<msup><msub><mi>L</mi><mi>lowerleg</mi></msub><mn>2</mn></msup>
-												</mrow>
-												<mrow>
-													<mn>2</mn>
-													<mo>&#x2062;</mo>
-													<msub><mi>L</mi><mi>tight</mi></msub>
-													<mo>&#x2062;</mo>
-													<mi>d</mi>
-												</mrow>
-												</mfrac>
-											<mo>)</mo>
-										</math>
+  <mrow>
+    <mi>B</mi>
+    <mo>(</mo><mi>t</mi><mo>)</mo>
+    <mo>=</mo>
+    <munder>
+      <mo>∑</mo>
+      <mrow>
+        <mi>i</mi><mo>=</mo><mn>0</mn>
+      </mrow>
+    </munder>
+    <msup><mn></mn><mn>4</mn></msup>
+    <mo> </mo>
+    <mrow>
+      <mi>binom</mi>
+      <mo>(</mo><mn>4</mn><mo>,</mo><mi>i</mi><mo>)</mo>
+      <mo>&#x2062;</mo>
+      <msup><mo>(</mo><mi>1</mi><mo>-</mo><mi>t</mi><mo>)</mo><mrow><mn>4</mn><mo>-</mo><mi>i</mi></mrow></msup>
+      <mo>&#x2062;</mo>
+      <msup><mi>t</mi><mi>i</mi></msup>
+      <mo>&#x2062;</mo>
+      <msub><mi>P</mi><mi>i</mi></msub>
+    </mrow>
+  </mrow>
+</math>
 										<br>
 									</div>
 									<br>
@@ -235,6 +229,62 @@
 									</p>
 									<h4>Movement of the legs</h4>
 									<p>
+										With the help of the inverse kinematic, it is possible to define trajectories for a feet in x and y dimension. <br>
+										There are some requirements for the trajectories during the walking gait: <br>
+										<ul>	
+											<li>The foot has to be lifted during the forward movement.</li>
+											<li>The foot has to move smoothly.</li>
+											<li>The foot has to be set down smoothly.</li>
+											<li>The foot has to be accelarated smoothly.</li>
+										</ul>
+										These requirements can be fulfilled with a Bezier curve of fourth order which is shown below. <br>
+										<br>
+										<div style="text-align: center;">
+											<math xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<mi>B</mi>
+													<mo>(</mo><mi>t</mi><mo>)</mo>
+													<mo>=</mo>
+													<msup><mo>(</mo><mi>1</mi><mo>-</mo><mi>t</mi><mo>)</mo><mn>4</mn></msup>
+													<mo>&#x2062;</mo>
+													<msub><mi>P</mi><mn>0</mn></msub>
+													<mo>+</mo>
+													<mn>4</mn>
+													<mo>&#x2062;</mo>
+													<msup><mo>(</mo><mi>1</mi><mo>-</mo><mi>t</mi><mo>)</mo><mn>3</mn></msup>
+													<mo>&#x2062;</mo>
+													<mi>t</mi>
+													<mo>&#x2062;</mo>
+													<msub><mi>P</mi><mn>1</mn></msub>
+													<mo>+</mo>
+													<mn>6</mn>
+													<mo>&#x2062;</mo>
+													<msup><mo>(</mo><mi>1</mi><mo>-</mo><mi>t</mi><mo>)</mo><mn>2</mn></msup>
+													<mo>&#x2062;</mo>
+													<msup><mi>t</mi><mn>2</mn></msup>
+													<mo>&#x2062;</mo>
+													<msub><mi>P</mi><mn>2</mn></msub>
+													<mo>+</mo>
+													<mn>4</mn>
+													<mo>&#x2062;</mo>
+													<mi>(</mi><mi>1</mi><mo>-</mo><mi>t</mi><mi>)</mi>
+													<mo>&#x2062;</mo>
+													<msup><mi>t</mi><mn>3</mn></msup>
+													<mo>&#x2062;</mo>
+													<msub><mi>P</mi><mn>3</mn></msub>
+													<mo>+</mo>
+													<msup><mi>t</mi><mn>4</mn></msup>
+													<mo>&#x2062;</mo>
+													<msub><mi>P</mi><mn>4</mn></msub>
+												</mrow>
+											</math>
+										</div>
+										<br>
+										Where P0 to P4 are the control points of the Bezier curve and t is a parameter between 0 and 1. <br>
+										The following curve is used for the foot trajectory during the walking gait.
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/leg_tr.png"></img>
+										</div>
 										The animation below shows either the movement of one leg or all four legs during the walking gait. <br>
 										As described above, the walking gait is divided into four phases. <br>
 										In each phase, one leg is lifted, moved forward and set down again, while the other three legs provide stability. <br>

@@ -46,6 +46,9 @@ function trajectory(time, phaseOffset) {
     let phase = ((time / stepTime) + phaseOffset) % 1;
 
     let x, y;
+    function swingX(p, start, end, speed){
+            return (start - speed - end) / 2 * Math.cos(Math.pi * p) - speed * p + (start - (start - speed - end) / 2);
+    }
 
     if (phase < 0.75) {
         // Working phase
@@ -60,10 +63,16 @@ function trajectory(time, phaseOffset) {
         p3 = startingPos[1]-   0.3 * stepHeight;
         p4 = startingPos[1];
 
-        x = startingPos[0]-0.75*stepLength+ stepLength * (0.5 - 0.5 * Math.cos(Math.PI * p));
+        //x = startingPos[0]-0.75*stepLength+ stepLength * (0.5 - 0.5 * Math.cos(Math.PI * p));
         y = (1 - p) ** 4 * p0 +4 * (1 - p) ** 3 * p * p1 +6 * (1 - p) ** 2 * p ** 2 * p2 +4 * (1 - p) * p ** 3 * p3 + p** 4 * p4;
-       
+       x= swingX(p, startingPos[0]-0.75*stepLength, startingPos[0]+0.25*stepLength, stepLength/stepTime);
     }
+    /*
+
+        function swingX(p, start, end, speed){
+            return (start + speed - end) / 2 * Math.cos(Math.pi * p) + speed * p + (start - (start + speed - end) / 2)
+    }
+    */
 
     return [x, y];
 }
@@ -75,10 +84,10 @@ async function animateStepsFour() {
         for (let t = 0; t < stepTime; t += 1000 / frequency) {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            drawLeg(inverseKinematics(trajectory(t,(1/4))), hips[0]); //RR
-            drawLeg(inverseKinematics(trajectory(t,(3/4))), hips[1]); //RL
-            drawLeg(inverseKinematics(trajectory(t,(2/4))), hips[2]); //FR
-            drawLeg(inverseKinematics(trajectory(t,0)), hips[3]); //FL
+            drawLeg(inverseKinematics(trajectory(t,(2/4))), hips[0]); //RR 2
+            drawLeg(inverseKinematics(trajectory(t,(0/4))), hips[1]); //RL 4
+            drawLeg(inverseKinematics(trajectory(t,(1/4))), hips[2]); //FR 3
+            drawLeg(inverseKinematics(trajectory(t,(3/4))), hips[3]); //FL 1
             await sleep(1000 / frequency);
         }
     }
