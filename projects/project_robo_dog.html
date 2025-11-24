@@ -316,6 +316,13 @@
 										All values are in a safe range for the servos and the variations are continuous and smooth.
 										Therefore, the walking gait can be implemented on the real robot. If the robot will be lighter, even bigger step lengths are possible.
 									</p>
+									<h4>Steering</h4>
+									<p>
+										Since the robot has a 2 DOF leg which can only move in the sagittal plane, steering is limited like on a tracked vehicle. <br>
+										Steering is realized by different step lengths for the left and right legs.
+										If the left legs have a bigger step length than the right legs, the robot turns to the right and vice versa. <br>
+										The bigger the difference between the step lengths, the sharper the turn.
+									</p>
 									<h3>Wiring and Parts</h3>
 									<p>
 										As already mentioned, the robotic dog is controlled by an ESP32 and the MG90S servos are controlled via a PCA9685 servo driver board. 
