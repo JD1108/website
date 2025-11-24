@@ -96,7 +96,7 @@
 									</p>
 									<h4>Inverse kinematic</h4>
 									<p>
-										For a smooth walking gait, the servo angles have to be calculated depending on the desired foot position. <br>
+										For a smooth walking gait, the servo angles have to be calculated depending on the desired foot position. 
 										Therefore, an inverse kinematic for the legs was developed. Each leg has two degrees of freedom, which are controlled by two servos. <br>
 										The following figure shows the a model of one leg:
 										<div style="text-align: center;">
@@ -280,7 +280,7 @@
 										</div>
 										<br>
 										Where P0 to P4 are the control points of the Bezier curve and t is a parameter between 0 and 1. <br>
-										The following curve is used for the foot trajectory during the walking gait.
+										The following curve is used for the foot trajectory during the walking gait:
 										<div style="text-align: center;">
 											<img class="image_in_text" src="../images/robo_dog/leg_tr.png"></img>
 										</div>
@@ -307,7 +307,7 @@
 										This made it possible to verify the moments, speeds und positions.<br>
 										It allowed to optimize the walking gait before implementing it on the real robot.
 										A maximum weight of 500 g was assumed for the dog which is distributed on three legs on time. 
-										The MG90s servos can provide a stall torque of 0.177 Nm which was divided by three for safety reasons. 
+										The MG90s servos can provide a stall torque of 0.177 Nm which was divided by three for safety reasons. <br>
 										The folowing figure shows the results of the simulation:
 										<div style="text-align: center;">
 											<img class="image_in_text" src="../images/robo_dog/leg_m.png"></img>
@@ -326,9 +326,9 @@
 									<h3>Wiring and Parts</h3>
 									<p>
 										As already mentioned, the robotic dog is controlled by an ESP32 and the MG90S servos are controlled via a PCA9685 servo driver board. 
-										In addition, a 7,4 V 2000 mAh 15C LiPo battery and two XL4015 are used to supply the robot dog with sufficent power. <br>
-										The XL4015 convert the battery voltage to 5 V. The servos are connected directly to the XL4015 outputs, four to each. <br>
-										The ESP32 and the PCA9685 are also supplied with 5 V from the XL4015 and are interconnected with I<sup>2</sup>C <br>
+										In addition, a 7,4 V 2000 mAh 15C LiPo battery and two XL4015 are used to supply the robot dog with sufficent power.
+										The XL4015 convert the battery voltage to 5 V. The servos are connected directly to the XL4015 outputs, four to each.
+										The ESP32 and the PCA9685 are also supplied with 5 V from the XL4015 and are interconnected with I<sup>2</sup>C. <br>
 										The folowing schematic shows the wiring of the components:
 										<div style="text-align: center;">
 											<img class="image_in_text" src="../images/robo_dog/schematic_without_radio.png"></img>
