@@ -80,7 +80,7 @@
 										The robotic dog is controlled by an ESP32 and the MG90S servos are controlled via a PCA9685 servo driver board. <br>
 										Following the owner is realized with the help of two RXB6 recievers which locate a 433 MHz transmitter held by the owner.
 									</p>
-									<h4>Software development</h4>
+									<h3>Software development</h3>
 									<h4>Walking Gait</h4>
 									<p>
 										The first version of the robotic dog has no interial measurement unit (IMU) and therefore no feedback control. Hence the walking gait had to be very stable and is only based on time. <br>
@@ -288,6 +288,9 @@
 										The animation below shows either the movement of one leg or all four legs during the walking gait. <br>
 										As described above, the walking gait is divided into four phases. <br>
 										In each phase, one leg is lifted, moved forward and set down again, while the other three legs provide stability. <br>
+										<br>
+										Feel free to try it out:
+										<br>
 										<div style="text-align: center;">
 											<canvas id="ani" width="500" height="520"></canvas>
 											<script src="../project_files/robo_dog/animation.js"></script>
@@ -298,7 +301,31 @@
 											<button class="butAni" onclick="animateStepsFour()">Four Legs</button>
 											</div>
 										</div>
-									</p>	
+									</p>
+									<h4>Simulation of a leg</h4>
+									<p>
+										Before implementing the walking gait on the real leg, the movement of one leg was simulated in Python. <br>
+										This made it possible to verify the moments, speeds und positions.<br>
+										It allowed to optimize the walking gait before implementing it on the real robot.
+										A maximum weight of 500 g was assumed for the dog which is distributed on three legs on time. 
+										The MG90s servos can provide a stall torque of 0.177 Nm which was divided by three for safety reasons. 
+										The folowing figure shows the results of the simulation:
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/leg_m.png"></img>
+										</div>
+										This is for a step length of 5 cm which starts 1 cm before the vertical projection of the hip. <br>
+										All values are in a safe range for the servos and the variations are continuous and smooth.
+										Therefore, the walking gait can be implemented on the real robot. If the robot will be lighter, even bigger step lengths are possible.
+									</p>
+									<h3>Wiring and Parts</h3>
+									<p>
+										As already mentioned, the robotic dog is controlled by an ESP32 and the MG90S servos are controlled via a PCA9685 servo driver board. 
+										In addition, a 7,4 V 2000 mAh 15C LiPo battery and two XL4015 are used to supply the robot dog with sufficent power. <br>
+									</p>
+									<h3>Programming the ESP32</h3>
+									<p>
+										The ESP32 was programmed with ESP-IDF in VS Code. <br>
+									</p>
 									<div style="height:6em"></div>
 									<p>This project was a cooperation with <a href="https://nora-1125.github.io/Website/">Nora</a>. Please check her website, too.</p>
 									<h3>License</h3>
