@@ -150,6 +150,7 @@ async function animateStepsFour() {
             drawLeg(inverseKinematics(trajectory(t,(0/4))), hips[1],1); //RL 4 0
             drawLeg(inverseKinematics(trajectory(t,(1/4))), hips[2],1); //FR 3 1
             drawLeg(inverseKinematics(trajectory(t,(3/4))), hips[3],1); //FL 1 3
+            // for arranging
             /*drawLeg(inverseKinematics(trajectory(t,(0/4))), hips[0],1); 
             drawLeg(inverseKinematics(trajectory(t,(0/4))), hips[1],1); 
             drawLeg(inverseKinematics(trajectory(t,(0/4))), hips[2],1); 
