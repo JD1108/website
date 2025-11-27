@@ -48,7 +48,15 @@
 										<img class="image_in_text" style="object-position: 50% 10%;"src="../images/robo_dog/ai_dog.png"></img>
 									</div>
 									<h2>Robotic Dog</h2>
-									<h3>The idea</h3>
+									<h3>Content</h3>
+									<ol>
+										<li><a href="#idea" onclick="onClickScroll(event)"> The Idea</a></li>
+										<li><a href="#threeD" onclick="onClickScroll(event)"> 3D Models</a></li>
+										<li><a href="#gait" onclick="onClickScroll(event)"> Walking Gait</a></li>
+										<li><a href="#wire" onclick="onClickScroll(event)"> Wiring and Parts</a></li>
+										<li><a href="#prog" onclick="onClickScroll(event)"> Programming the ESP32</a></li>
+									</ol>
+									<h3 id="idea">The Idea</h3>
 									<p>
 										Dogs are a person’s best friend. 
 										Imagine having one that helps you like a true companion on every DIY project—handing you tools or fetching the parts you need. 
@@ -75,13 +83,13 @@
 										The robotic dog is controlled by an ESP32 and the MG90S servos are controlled via a PCA9685 servo driver board. <br>
 										Following the owner is realized with the help of two RXB6 recievers which locate a 433 MHz transmitter held by the owner.
 									</p>
-									<h3>3D-Models</h3>
+									<h3 id="threeD">3D-Models</h3>
 									<p>
 										The basis for the robotic dog are 3D models from John Bradnam on <a href="https://www.hackster.io/john-bradnam/robot-dog-boston-cbc763" target="_blank">www.hackster.io</a>. 
 										Many changes were nessesary to fit the components which should be used and make the carrying function possible. This is discribed on <a href="https://nora-1125.github.io/Website/ProjectRoboDog.html">Noras project site</a>, because she did major part of 3D-Design. All code is provided in a <a href="https://github.com/JD1108/RoboticDog">GitHub respository</a>
 									</p>
 									
-									<h3>Walking Gait</h3>
+									<h3 id="gait">Walking Gait</h3>
 									<p>
 										The first version of the robotic dog has no interial measurement unit (IMU) and therefore no feedback control. Hence the walking gait had to be very stable and is only based on time. <br>
 										Therefore, a walking gait was developed where the robot always has three legs on the ground. <br>
@@ -324,7 +332,7 @@
 										If the left legs have a bigger step length than the right legs, the robot turns to the right and vice versa. <br>
 										The bigger the difference between the step lengths, the sharper the turn.
 									</p>
-									<h3>Wiring and Parts</h3>
+									<h3 id="wire">Wiring and Parts</h3>
 									<p>
 										As already mentioned, the robotic dog is controlled by an ESP32 and the MG90S servos are controlled via a PCA9685 servo driver board. 
 										In addition, a 7,4 V 2000 mAh 15C LiPo battery and two XL4015 are used to supply the robot dog with sufficent power.
@@ -335,7 +343,7 @@
 											<img class="image_in_text" src="../images/robo_dog/schematic_without_radio.png"></img>
 										</div>
 									</p>
-									<h3>Programming the ESP32</h3>
+									<h3 id="prog">Programming the ESP32</h3>
 									<p>
 										The ESP32 was programmed with ESP-IDF in a combination of C and C++ in VS Code. There are two classes one for the I<sup>2</sup>C-bus and one for a leg. They are capsuled in wrappers to be useable in the main programm which is written in C. Since all code is avaiable on <a href="https://github.com/JD1108/RoboticDog">GitHub</a> <br>
 									</p>
@@ -421,6 +429,7 @@
 			<script src="../assets/js/breakpoints.min.js"></script>
 			<script src="../assets/js/util.js"></script>
 			<script src="../assets/js/main.js"></script>
+			<script src="../assets/js/scrollLinks.js"></script>
 
 	</body>
 </html>
