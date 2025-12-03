@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Robot Control</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input[type="range"] {
+            width: 100%;
+        }
+        .slider::-webkit-slider-runnable-track {
+            height: 40px;       
+            background: #00028f;
+            border-radius: 10px;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 5%;
+            height: 120%;       
+            background: #007bff;
+            border-radius: 10px;
+            margin-top: -0.5%;
+        }       
+        
+        .scale {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 4px;
+            font-size: 14px;
+        }
+        .startstop{
+            width:45%;
+            height:40px;
+            margin-left:2%;
+            margin-right:2%;
+            font-size:larger;
+            color:white;
+            background: #00028f;
+            border-radius: 10px;
+        }
+        .calB{
+            width:30%;
+            height:40px;
+            margin-left:1.5%;
+            margin-right:1.5%;
+            font-size:larger;
+            color:white;
+            background: #00028f;
+            border-radius: 10px;
+        }
+        input[type="checkbox"]{
+                height:25px;
+                width:25px;
+        }
+        .hidden {
+            display:none;
+        }
+        .visible {
+            display: inline-block;
+        }
+    </style>
+
+</head>
+<body>
+    <label for="turn">Turn:</label><br>
+
+    <input type="range" class="slider" id="turn" min="-10" max="10" value="0" oninput="turn(this.value)">
+
+    <div class="scale">
+        <span>left</span>
+        <span>0</span>
+        <span>right</span>
+    </div>
+
+    <br><br>
+
+    <button class="startstop" onclick="start()">Start</button>
+    <button class="startstop" onclick="stop()">Stop</button>
+    <br><br>
+
+    <label for="turn">Calibration:</label><br>
+    <input id="cal" type="checkbox" onclick="calStart()"><br>
+    <button id="a90" class="calB hidden" onclick="setAngle(90)">All 90 Degree</button>
+    <button  id="a10" class="calB hidden" onclick="setAngle(10)">All 10 Degree</button>
+    <button  id="a170" class="calB hidden" onclick="setAngle(170)">All 170 Degres</button>
+
+
+
+    <script>
+        function turn(factor) {
+            fetch(`/turn?turn=${factor}`)
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(err => console.error(err));
+        }
+
+        function stop() {
+            fetch(`/stop`)
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(err => console.error(err));
+        }
+
+        function start() {
+            fetch(`/go`)
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(err => console.error(err));
+        }
+        function calStart() {
+             const isChecked = document.getElementById("cal").checked;
+             const a90= document.getElementById("a90");
+             const a10= document.getElementById("a10");
+             const a170= document.getElementById("a170");
+            if(isChecked){
+                a90.classList.remove("hidden");
+                a90.classList.add("visible");
+                a10.classList.remove("hidden");
+                a10.classList.add("visible");
+                a170.classList.remove("hidden");
+                a170.classList.add("visible");
+            }
+            else{
+                a90.classList.remove("visible");
+                a90.classList.add("hidden");
+                a10.classList.remove("visible");
+                a10.classList.add("hidden");
+                a170.classList.remove("visible");
+                a170.classList.add("hidden");
+            }
+        }
+        function setAngle(factor) {
+            fetch(`/setAngle?angle=${factor}`)
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch(err => console.error(err));
+        }
+    </script>
+
+</body>
+</html>
