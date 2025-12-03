@@ -1,0 +1,238 @@
+<!DOCTYPE HTML>
+<!--
+	Verti by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Compulsory Elective Courses Production Engineering</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<script src="https://kit.fontawesome.com/5c4820bc1c.js" crossorigin="anonymous"></script>
+	</head>
+	<body class="is-preload no-sidebar">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<header id="header" class="container">
+
+						<!-- Logo -->
+							<div id="logo">
+								<h1><a href="../index.html">Jan-Erik</a></h1>
+								
+							</div>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li><a href="../index.html">Welcome</a></li>
+									<li class="current"><a href="projects.html">Projects</a></li>
+									<li><a href="../about_myself.html">About Myself</a></li>
+								</ul>
+							</nav>
+
+					</header>
+				</div>
+
+			<!-- Main -->
+				<div id="main-wrapper">
+					<div class="container">
+						<div id="content">
+
+							<!-- Content -->
+								<article>
+									<div class="title_pic"style="text-align: center;">
+										<img class="image_in_text" style="object-position: 50% 20%;"src="../images/prodeng/prodeng.jpeg"></img>
+									</div>
+									<h2>Compulsory Elective Courses Production Engineering</h2>
+									<p>
+										This isn't a real project. The Compulsory Elective Course Production Engineering is described here which was a requirement for the grading.
+									</p>
+									<h3>Content</h3>
+									<ol>
+										<li><a href="#webD" onclick="onClickScroll(event)">Web Development</a></li>
+										<li><a href="#cad" onclick="onClickScroll(event)"> 3D CAD and 3D Printing</a></li>
+										<li><a href="#cnc" onclick="onClickScroll(event)"> CNC Milling, Injection Molding , Lathe</a></li>
+										<li><a href="#laser" onclick="onClickScroll(event)"> Laser</a></li>
+									</ol>
+									<h3 id="webD">Web Development</h3>
+									<p>
+										The basic set up of Visual Studio Code for web development was taught. Then the structure of html and the most common tags were explained and it was shown that CSS and JavaScript make website much prettier and more powerfull.<br>
+										In the end, everybody was able to upload a website to github and published it.<br>
+										<a href="https://marcellotania.com/Production-Engineering-2025/" target="_blank">Here</a> are the links to the other websites which were made in this course.<br>
+										Not only this website is part of it, there is nice and small example in the <a href="project_robo_dog.html" target="_blank">robotic dog project</a> which is described in more detail here.<br>
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/prodeng/control.png"></img>
+										</div>
+									It may not be the most beautiful design, but it includes all basic techniques for web design, including html, css and javascript.
+									There are:
+									<ul>
+										<li> 
+											a slider, like: <br>
+											<div class="codeBlock">
+												<code>
+													&lt;label for=&quot;turn&quot;&gt;Turn:&lt;/label&gt;&lt;br&gt; <br>
+													&lt;input type=&quot;range&quot; class=&quot;slider&quot; id=&quot;turn&quot; min=&quot;-10&quot; max=&quot;10&quot; value=&quot;0&quot; oninput=&quot;turn(this.value)&quot;&gt;
+												</code>
+											</div>
+										</li>
+										<li> 
+											buttons, like: <br>
+											<div class="codeBlock">
+												<code>
+													&lt;button id=&quot;bStart&quot; class=&quot;startstop activeStart&quot; onclick=&quot;start()&quot;&gt;Start&lt;/button&gt;
+												</code>
+											</div>
+										</li>
+										<li> 
+											a checkbox, like: <br>
+											<div class="codeBlock">
+												<code>
+													&lt;input id=&quot;cal&quot; type=&quot;checkbox&quot; onclick=&quot;calStart()&quot;&gt;&lt;br&gt;
+												</code>										</code>
+											</div>
+										</li>
+										<li> 
+											css styles, like: <br>
+											<div class="codeBlock">
+												<code>
+													.startstop{ <br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width:45%; <br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height:40px; <br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-left:2%; <br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-right:2%;<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size:larger;<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color:white;<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 10px;}
+												</code>
+											</div>
+										</li>
+										<li> 
+											javascript functions, like: <br>
+											<div class="codeBlock">
+												<code>
+													function start() { <br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fetch(`/go`) <br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.then(response => response.text())<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.then(data => console.log(data))<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.catch(err => console.error(err));<br>
+													<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s = document.getElementById("bStart");<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s.classList.remove("activeStart");<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s.classList.add("inactive");<br>
+													<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s = document.getElementById("bStop");<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s.classList.add("activeStop");<br>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s.classList.remove("inactive");}
+												</code>
+											</div>
+										</li>
+									</ul>
+									This function sends http gets for controlling the robot on the one hand (shown in line 1) and changes the design of the website by adding and removing classes on the other hand.<br>
+									Feel free to try it out: <a href="../project_files/robo_dog/control.html" target="_blank">Here</a> is the result. <br>
+									</p>
+									<h3 id="cad">3D CAD and 3D Printing</h3>
+									<p>
+										Text
+									</p>
+									<h3 id="cnc">CNC Milling, Injection Molding , Lathe</h3>
+									<p>
+										Text
+									</p>
+									<h3 id="laser">Laser</h3>
+									<p>
+										Text
+									</p>
+								</article>
+								<pre><code>
+.startstop{
+    width:45%;
+    height:40px;
+    margin-left:2%;
+    margin-right:2%;
+    font-size:larger;
+    color:white;
+    border-radius: 10px;
+}
+</code></pre>
+
+						</div>
+					</div>
+				</div>
+			
+			<!-- Footer-->
+				<div id="footer-wrapper">
+					<footer id="footer" class="container">
+						<div class="row">
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Links -->
+									<section class="widget links">
+										<h3>Interesting links</h3>
+										<ul class="style2">
+											<li><a href="https://www.hsu-hh.de/">HSU</a></li>
+											<li><a href="https://nora-1125.github.io/Website/">Nora</a></li>
+											<li><a href="https://marcellotania.com/Production-Engineering-2025/">Production Engineering</a></li>
+											<li><a href="https://openlab-hamburg.de">Open Lab</a></li>
+										</ul>
+									</section>
+
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+
+
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+
+								
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Contact -->
+									<section class="widget contact">
+										<h3>Contact Me</h3>
+										<ul>
+											<li>
+												<a href="https://github.com/JD1108/" target="_blank" rel="noopener" class="icon">
+  													<i id="contacts" class="fab fa-github fa-lg"></i>
+												</a>
+											</li>
+											<li>
+												<a href="https://github.com/JD1108/" target="_blank" rel="noopener" class="icon">
+  													<i id="contacts" class="far fa-envelope fa-lg"></i>
+												</a>
+											</li>
+											
+										</ul>
+									</section>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+
+			</div> 
+
+		<!-- Scripts -->
+
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.dropotron.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
+
+	</body>
+</html>

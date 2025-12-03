@@ -1509,6 +1509,12 @@ input, select, textarea {
     	height: 100%;
     	object-fit: cover;      /* füllt den Bereich schön aus */
 	}
+	.codeBlock{
+		background: rgb(60, 60, 60);
+		color:white;
+		padding:4px;
+		border-radius:6px;
+	}
 /* Forms */
 
 	form label {

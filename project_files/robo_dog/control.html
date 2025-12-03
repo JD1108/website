@@ -84,9 +84,7 @@
 </head>
 <body>
     <label for="turn">Turn:</label><br>
-
     <input type="range" class="slider" id="turn" min="-10" max="10" value="0" oninput="turn(this.value)">
-
     <div class="scale">
         <span>left</span>
         <span>0</span>
@@ -98,11 +96,9 @@
         
     </div>
     <br>
-
     <button id="bStart"class="startstop activeStart" onclick="start()">Start</button>
     <button id="bStop"class="startstop inactive" onclick="stop()">Stop</button>
     <br><br>
-
     <label for="turn">Calibration:</label><br>
     <input id="cal" type="checkbox" onclick="calStart()"><br>
     <button id="a90" class="calB hidden" onclick="setAngle(90)">All 90 Degree</button>
