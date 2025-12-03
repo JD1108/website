@@ -34,6 +34,9 @@
             margin-top: 4px;
             font-size: 14px;
         }
+        .cDiv{
+            text-align: center;
+        }
         .startstop{
             width:45%;
             height:40px;
@@ -41,8 +44,20 @@
             margin-right:2%;
             font-size:larger;
             color:white;
-            background: #00028f;
             border-radius: 10px;
+        }
+        .activeNoTurn{
+            background: #00028f;
+        }
+        .activeStart{
+            background:green;
+        }
+        .activeStop{
+            background:red;
+
+        }
+        .inactive{
+            background:grey;
         }
         .calB{
             width:30%;
@@ -77,11 +92,15 @@
         <span>0</span>
         <span>right</span>
     </div>
+    <br>
+    <div class="cDiv">
+        <button id="noT" class="startstop inactive" onclick="noTurn()">Straight Ahead</button>
+        
+    </div>
+    <br>
 
-    <br><br>
-
-    <button class="startstop" onclick="start()">Start</button>
-    <button class="startstop" onclick="stop()">Stop</button>
+    <button id="bStart"class="startstop activeStart" onclick="start()">Start</button>
+    <button id="bStop"class="startstop inactive" onclick="stop()">Stop</button>
     <br><br>
 
     <label for="turn">Calibration:</label><br>
@@ -98,6 +117,22 @@
                 .then(response => response.text())
                 .then(data => console.log(data))
                 .catch(err => console.error(err));
+
+            if(factor==0){
+                noT=document.getElementById("noT");
+                noT.classList.remove("activeNoTurn");
+                noT.classList.add("inactive");
+            }
+            else{
+                noT=document.getElementById("noT");
+                noT.classList.add("activeNoTurn");
+                noT.classList.remove("inactive");
+            }
+        }
+        function noTurn() {
+            slider=document.getElementById("turn");
+            slider.value=0;
+            turn(0);
         }
 
         function stop() {
@@ -105,6 +140,12 @@
                 .then(response => response.text())
                 .then(data => console.log(data))
                 .catch(err => console.error(err));
+            s=document.getElementById("bStop");
+            s.classList.remove("activeStop");
+            s.classList.add("inactive");
+            s=document.getElementById("bStart");
+            s.classList.add("activeStart");
+            s.classList.remove("inactive");
         }
 
         function start() {
@@ -112,6 +153,13 @@
                 .then(response => response.text())
                 .then(data => console.log(data))
                 .catch(err => console.error(err));
+            s=document.getElementById("bStart");
+            s.classList.remove("activeStart");
+            s.classList.add("inactive");
+            s=document.getElementById("bStop");
+            s.classList.add("activeStop");
+            s.classList.remove("inactive");
+            
         }
         function calStart() {
              const isChecked = document.getElementById("cal").checked;
@@ -141,6 +189,7 @@
                 .then(data => console.log(data))
                 .catch(err => console.error(err));
         }
+        
     </script>
 
 </body>
