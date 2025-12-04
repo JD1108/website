@@ -63,12 +63,13 @@
 										The basic set up of Visual Studio Code for web development was taught. Then the structure of html and the most common tags were explained and it was shown that CSS and JavaScript make website much prettier and more powerfull.<br>
 										In the end, everybody was able to upload a website to github and published it.<br>
 										<a href="https://marcellotania.com/Production-Engineering-2025/" target="_blank">Here</a> are the links to the other websites which were made in this course.<br>
-										Not only this website is part of it, there is nice and small example in the <a href="project_robo_dog.html" target="_blank">robotic dog project</a> which is described in more detail here.<br>
+										Not only this website is part of it, a nice, small and illustrative example can be found in the <a href="project_robo_dog.html" target="_blank">robotic dog project</a>, which is described in more detail here.<br>
 										<div style="text-align: center;">
 											<img class="image_in_text" src="../images/prodeng/control.png"></img>
 										</div>
-									It may not be the most beautiful design, but it includes all basic techniques for web design, including html, css and javascript.
-									There are:
+										It may not be the most visually polished design, but it does demonstrate all the essential
+    									techniques of modern web development, including HTML, CSS, and JavaScript. The project
+    									contains, for example:
 									<ul>
 										<li> 
 											a slider, like: <br>
@@ -131,34 +132,100 @@
 											</div>
 										</li>
 									</ul>
-									This function sends http gets for controlling the robot on the one hand (shown in line 1) and changes the design of the website by adding and removing classes on the other hand.<br>
-									Feel free to try it out: <a href="../project_files/robo_dog/control.html" target="_blank">Here</a> is the result. <br>
+										This function not only sends HTTP GET requests to control the robot (as shown in the
+										first line), but also dynamically changes the appearance of the website by adding and
+										removing CSS classes.<br><br>
+
+										Feel free to try it yourself:
+										<a href="../project_files/robo_dog/control.html" target="_blank">Here</a>
+										is the result.
 									</p>
 									<h3 id="cad">3D CAD and 3D Printing</h3>
 									<p>
-										Text
+										<p>
+											Learning how to use Fusion for 3D design, followed by slicing and finally 3D printing,
+											is a step-by-step process that combines creativity, technical skills, and practical
+											problem-solving. The workflow typically begins with understanding the basic tools and
+											interface of Fusion, then progresses to creating increasingly complex models.
+										</p>
+
+										<h4>1. Learning Fusion (CAD Modeling)</h4>
+										<p>
+											The first stage is becoming familiar with Fusion’s user interface and modeling tools.
+											This includes sketching basic shapes, using constraints and dimensions, and learning how
+											to extrude, cut, and modify geometry. Then there were some more advanced techniques like fillets.
+											The goal is to learn how to model objects precisely so they can be manufactured or printed successfully.<br>
+											In this course, a mobile phone mount was desgined. The 3D model in Fusion is shown below.
+											<div style="text-align: center;">
+												<img class="image_in_text" src="../images/prodeng/fusionMount.png"></img>
+											</div>
+										</p>
+
+										<h4>2. Exporting and Slicing</h4>
+										<p>
+											Once the model is complete, it is exported as an STL file. This file is then opened
+											in  PrusaSlicer. In the slicer, it is possible to prepare the
+											model for 3D printing by adjusting layer height, infill density, supports, temperatures,
+											speeds, and other printing parameters. The slicer converts the model into G-code, which
+											contains all the instructions the printer needs to build the object. <br>
+											Here is a sliced version of the mobile phone mount.
+											<div style="text-align: center;">
+												<img class="image_in_text" src="../images/prodeng/prusaMount.png"></img>
+											</div>
+										</p>
+
+										<h4>3. 3D Printing</h4>
+										<p>
+											The final step is sending the G-code to the 3D printer and preparing the printer by preheating,
+											loading the filament and ensuring that the build plate is properly leveled and clean. After starting
+											the print, the machine follows the G-code instructions layer by layer. Once printing is
+											complete, the finished part is removed from the build plate, cleaned from supports, and inspected.<br>
+											This is the real 3D- printed mobile phone mount which was built from skratch in a few hours.
+											<div style="text-align: center;">
+												<img class="image_in_text" src="../images/prodeng/realMount.png"></img>
+											</div>
+											There are many more techniques in 3D-CAD so the learning is never over. And in 3D printing are many possible errors, so it is alearning by doing.
+											<br>
+											For more about the secondary treatment of 3D-printed parts, check the <a href="project_robo_dog.html" target="_blank">robotic dog project</a>.
+										</p>
 									</p>
-									<h3 id="cnc">CNC Milling, Injection Molding , Lathe</h3>
+									<h3 id="cnc">CNC Milling, Injection Molding, and Lathe</h3>
 									<p>
-										Text
+										The basics of CNC milling and G-code were introduced. <br>
+										Since the 3D-printed mold had already been used several times, the resulting injection molded parts were of poor quality.
+										<br>
+										On the conventional milling machine and the lathe, there was much more to learn and try out. After reading and understanding all safety instructions, the first task was to mill a groove into an aluminium block.
+										The most important aspect here is to turn the adjustment wheel slowly and smoothly in order to achieve a clean surface and avoid damaging the cutter.
+										<br>
+										After locating and replacing a blown fuse on the lathe, the next exercise was to machine an M10 thread onto a 20&nbsp;mm brass shaft. Again, a slow and precise hand movement is crucial; otherwise the indexable insert can break — which is not only inconvenient but also quite loud. <br><br>
+										After reducing the diameter to 10&nbsp;mm and adding a chamfer, cutting the thread with the thread cutter should have been straightforward, but in this case it was not. In the end, it was impossible to hold the thread cutter firmly enough, even after further reducing the diameter and enlarging the chamfer.
 									</p>
 									<h3 id="laser">Laser</h3>
 									<p>
-										Text
+										The introduction to laser cutting covered both the basic safety rules and the complete workflow from creating a vector design to the final cut. <br>
+										Before using the machine, the first step was to design the parts in a vector graphics program such as Inkscape. Here it is essential to choose the correct line styles: hairline for cutting andat least 0.5&nbsp;mm line width for engraving. Otherwise to much material is burnt oder the engraving is not readable. <br>
+										Furthermore, the colors have to be correct: red for cutting and black for engraving. This ensures that the laser cutter software correctly distinguishes between cut paths and engraved areas.
+										<br>
+										After a short explanation of how the laser operates and which materials can (and cannot) be processed, the vector file was imported into the laser cutter software. Power, speed, and number of passes had to be set carefully depending on the material and thickness.
+										<br>
+										The most important point here is to select the correct settings for the material. Too much power can burn or char the edges, while too little power prevents the cut from going through — resulting in a part that needs to be recut.<br>
+										The following image shows the interface of the laser cutting software.
+										<div style="text-align: center;">
+												<img class="image_in_text" src="../images/prodeng/laserSoftware.jpeg"></img>
+										</div>
+										Once the parameters were configured, the material was placed into the machine, aligned, and the focus height adjusted. After checking the preview frame and ensuring that the work area was clear, the cutting process could begin.
+										<br>
+										The following picture shows the working laser. The red laser dot is only for configuration and the cutting laser is invisible.
+										<div style="text-align: center;">
+												<img class="image_in_text" src="../images/prodeng/laser.jpeg"></img>
+										</div>
+										The first results were very precise: clean edges, sharp contours, and accurate dimensions made test assemblies straightforward. At the same time, it quickly became clear that even minor design mistakes — such as misaligned tabs or tolerances that were too tight — can cause problems during assembly.
+										<br>
+										Overall, laser cutting turned out to be one of the fastest and most satisfying manufacturing methods, especially for rapid prototyping, creating simple mechanical parts, and producing custom shapes directly from digital designs.
+										<br>
+										For more about laser cutting, check the <a href="project_walking_robot.html" target="_blank">walking robot project</a>.
 									</p>
 								</article>
-								<pre><code>
-.startstop{
-    width:45%;
-    height:40px;
-    margin-left:2%;
-    margin-right:2%;
-    font-size:larger;
-    color:white;
-    border-radius: 10px;
-}
-</code></pre>
-
 						</div>
 					</div>
 				</div>
