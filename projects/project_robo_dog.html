@@ -53,8 +53,11 @@
 										<li><a href="#idea" onclick="onClickScroll(event)"> The Idea</a></li>
 										<li><a href="#threeD" onclick="onClickScroll(event)"> 3D Models</a></li>
 										<li><a href="#gait" onclick="onClickScroll(event)"> Walking Gait</a></li>
-										<li><a href="#wire" onclick="onClickScroll(event)"> Wiring and Parts</a></li>
+										<li><a href="#wire" onclick="onClickScroll(event)"> Wiring</a></li>
 										<li><a href="#prog" onclick="onClickScroll(event)"> Programming the ESP32</a></li>
+										<li><a href="#asse" onclick="onClickScroll(event)"> Assembling</a></li>
+										<li><a href="#cost" onclick="onClickScroll(event)"> Parts and Prices</a></li>
+										<li><a href="#imp" onclick="onClickScroll(event)"> Planned improvements</a></li>
 									</ol>
 									<h3 id="idea">The Idea</h3>
 									<p>
@@ -86,7 +89,7 @@
 									<h3 id="threeD">3D-Models</h3>
 									<p>
 										The basis for the robotic dog are 3D models from John Bradnam on <a href="https://www.hackster.io/john-bradnam/robot-dog-boston-cbc763" target="_blank">www.hackster.io</a>. 
-										Many changes were nessesary to fit the components which should be used and make the carrying function possible. This is discribed on <a href="https://nora-1125.github.io/Website/ProjectRoboDog.html">Noras project site</a>, because she did major part of 3D-Design. All code is provided in a <a href="https://github.com/JD1108/RoboticDog">GitHub respository</a>
+										Many changes were nessesary to fit the components which should be used and make the carrying function possible. This is discribed on <a href="https://nora-1125.github.io/Website/ProjectRoboDog.html">Noras project site</a>, because she did major part of 3D-Design. All code and the parts are provided in a <a href="https://github.com/JD1108/RoboticDog">GitHub respository</a>
 									</p>
 									
 									<h3 id="gait">Walking Gait</h3>
@@ -300,7 +303,7 @@
 										Feel free to try it out:
 										<br>
 										<div style="text-align: center;">
-											<canvas id="ani" width="500" height="520"></canvas>
+											<canvas style="border-radius:6px;"id="ani" width="500" height="520"></canvas>
 											<script src="../project_files/robo_dog/animation.js"></script>
 											<div class="control">
 											<!--<input type="checkbox" class="opts" value=1> 1 leg<br>
@@ -332,7 +335,7 @@
 										If the left legs have a bigger step length than the right legs, the robot turns to the right and vice versa. <br>
 										The bigger the difference between the step lengths, the sharper the turn.
 									</p>
-									<h3 id="wire">Wiring and Parts</h3>
+									<h3 id="wire">Wiring</h3>
 									<p>
 										As already mentioned, the robotic dog is controlled by an ESP32 and the MG90S servos are controlled via a PCA9685 servo driver board. 
 										In addition, a 7,4 V 2000 mAh 15C LiPo battery and two XL4015 are used to supply the robot dog with sufficent power.
@@ -357,7 +360,229 @@
 										</div>
 										
 									</p>
+									<h4>Web interface</h4>
+									<p>
+										Since the "Follow Owner"-function isn't implemented yet, the robot is fully controlled with the webinterface.<br>
+										The ESP32 creates an accespoint which SSID and passwort must be defined in ESP-IDF.<br>
+										When connected, the server is on http://192.168.4.1 and looks like shown below.
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/control.png"></img>
+										</div>
+										There is a live test version on this website, too.<br>
+										Feel free to try it yourself:
+										<a href="../project_files/robo_dog/control.html" target="_blank">Here</a>
+										
 									</p>
+									<h3 id="asse">Assembling  </h3>
+									<h4>Post treatment of 3D printed parts</h4>
+									<p>
+										Once the print is finished, the parts looks as shown in the picture below.
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/3dPrintWithSupport.jpeg"></img>
+										</div>
+										So, the first step is remove the parts from the print bed and remove the supports from parts.	
+									</p>
+									<h4>Build a leg</h4>
+									<p>
+										Before assembling the leg, all servos should be in a defined state, so that there are no surprises when the robot starts moving. It is recommanded to use the calibration web interface and set all angles to 90 degrees. <br>
+										First, the hip servo is screwed to the hip element. Then, the thigh is set on the gearwheel of the servo is screwed tight. There are different parts for left and right, so it is important to use the right ones. In the next step, the knee servo is screwed to the tight.
+										The following picture shows the current state. 
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/upperLeg.jpeg"></img>
+										</div>
+										After that, the lower leg is mounted and screwed. The correct orientation is shown in the picture below. The screw has to be tighten carfully, so the leg don't wiggle, but can turn easily.
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/legWoWire.jpeg"></img>
+										</div>
+										Following this, the lower leg is connected to the servo. Therefore a 1.8&nbsp;mm plastic coated iron wire is bend as shown in the picture.
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/wireB.png"></img>
+										</div>
+										Inserting the wire finishes the leg.
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/legTop.png"></img>
+										</div>
+									</p>
+									<h4>Wiring and solding</h4>
+									<p>
+										Most cables are connected via soldering, because it needs less space than other methods. <br>
+										First step is the design of the perforated board which is used to distribute the current from the two XL4015.
+										As shown in the part <a href="#wire" onclick="onClickScroll(event)"> Wiring</a>, there is only one ground for all components which is important for the interpretation of the i2c and pwm signal.<br>
+										One XL4015 5 V is only connected to four servos and the other is connected to four servos and the ESP32 and the PCA9685.<br>
+										Due to a defect of the level shifter, the shown dog uses only 3.3V for the PCA9685 from the ESP32. Check if the used servos work with 3.3V pwm signals.
+										Short jumper male ends can be used as connection between the board and the servos. The ESP32 (and PCA9685) is connected wie male-female jumper wires which are soldered to the board, too.
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/boardTop.jpeg"></img>
+										</div>
+										The thicker wires below are connected with the outputs of XL4015s, so the board looks like shown below.
+										<div style="text-align: center;">
+											<img class="image_in_text" src="../images/robo_dog/boardXl.jpeg"></img>
+										</div>
+										If the battery is connected to the inputs of the XL4015s, the eletric components are built.
+										Before connecting something to the board, the output voltage of the XL4015s must be ajusted to 5.0V.
+
+									</p>
+									<h4>The body</h4>
+									<p>
+										
+									</p>
+									<h4>Calibration</h4>
+									<p>
+										Before starting the servos, the parameters of the servo must be compared to the cal.h, otherwise the servos could be destroyed. <br>
+										For the best result, the robot has to be calibrated. In this version, a complete calibration with the webserver isn't possible.
+										When the robot and the software is set up, the "All 90 Degree","All 10 Degree","All 170 Degree" buttons can be used for calibrating. <br>
+										If the results are not satisfying, the pwm values in the cal.h can be changed to improve the precision. <br>
+
+										The formula for calibration is: <br>
+										<div style="text-align: center;">
+											<math xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<mi>PWM</mi>
+													<mo>=</mo>
+													<mfrac>
+													<mi>dutytime in ms</mi>
+													<mn>20 ms</mn>
+													</mfrac>
+													<mo>&#x22C5;</mo>
+													<mn>4096</mn>
+												</mrow>
+											</math>
+										</div>
+										For example for 90° which is 1.5 ms for the used servos:<br>
+										<div style="text-align: center;">
+											<math xmlns="http://www.w3.org/1998/Math/MathML">
+												<mrow>
+													<mi>PWM</mi>
+													<mo>=</mo>
+													<mfrac>
+													<mi>1.5 ms</mi>
+													<mn>20 ms</mn>
+													</mfrac>
+													<mo>&#x22C5;</mo>
+													<mn>4096</mn>
+													<mo>=</mo>
+													<mi>307</mi>
+												</mrow>
+											</math>
+										</div>
+
+									</p>
+									<h3 id="cost">Parts and Prices</h3>
+									<p>
+										<table>
+											<thead>
+												<tr>
+													<th>Amount</th>
+													<th>Part</th>
+													<th>Price</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>1</td>
+													<td>ESP32</td>
+													<td>6.99 &euro;<sup>1</sup></td>
+												</tr>
+												<tr>
+													<td>1</td>
+													<td>PCA9685</td>
+													<td>6.89 &euro;</td>
+												</tr>
+												<tr>
+													<td>8</td>
+													<td>MG90S</td>
+													<td>19.99 &euro;</td>
+												</tr>
+												<tr>
+													<td>2</td>
+													<td>XL4015</td>
+													<td>5.33 &euro;<sup>1</sup></td>
+												</tr>
+												<tr>
+													<td>1</td>
+													<td>7,4 V Li-ion 2000mAh</td>
+													<td>16.98 &euro;</td>
+												</tr>
+												<tr>
+													<td>1</td>
+													<td>perforated board</td>
+													<td>0.55 &euro;<sup>1</sup></td>
+												</tr>
+												<tr>
+													<td>small amount</td>
+													<td>solder</td>
+													<td>3.99 &euro;<sup>2</sup></td>
+												</tr>
+												<tr>
+													<td>1 Set</td>
+													<td>Jumper Wires</td>
+													<td>6.99 &euro;<sup>2</sup></td>
+												</tr>
+												<tr>
+													<td>1 Set</td>
+													<td>M3 Screws</td>
+													<td>6.99 &euro;<sup>2</sup></td>
+												</tr>
+												<tr>
+													<td>300g</td>
+													<td>PLA filament</td>
+													<td>6.90 &euro;<sup>1</sup></td>
+												</tr>
+												<tr>
+													<td>26g</td>
+													<td>silicone SH A 45</td>
+													<td>7.95 &euro;</td>
+												</tr>
+												<tr>
+													<td>200 cm<sup>2</sup></td>
+													<td>acrylic glas (PMMA)</td>
+													<td>10.20 &euro;<sup>2</sup></td>
+												</tr>
+												<tr>
+													<td>8</td>
+													<td>Nail 0.9 x 30 mm</td>
+													<td>0.25 &euro;<sup>1</sup></td>
+												</tr>
+												<tr>
+													<td>small amount</td>
+													<td>talc powder</td>
+													<td>2.59 &euro;<sup>2</sup></td>
+												</tr>
+												<tr>
+													<td>40cm</td>
+													<td>1.8&nbsp;mm plastic coated iron wire</td>
+													<td>3.60 &euro;<sup>2</sup></td>
+												</tr>
+
+												<tr>
+													<td></td>
+													<td><strong>Total</strong></td>
+													<td><strong>97.19 &euro;</strong></td>
+												</tr>
+											</tbody>
+										</table>
+										1 &nbsp; calculated as part of a set <br>
+										2 &nbsp; can't be calculated, so hole set price
+										<h4>Machines and Tools</h4>
+										<ul>
+											<li>Trotec laser</li>
+											<li>Prusa MK4S</li>
+											<li>soldering station</li>
+											<li>multimeter</li>
+										</ul>
+										
+									</p>
+									<h3 id="imp">Planned improvements</h3>
+									<p>
+										<ul>
+											<li>real size</li>
+											<li>following function</li>
+											<li>stabilisation</li>
+											<li>improved calibration</li>
+											<li>diffrent walking gaits</li>
+										</ul>
+									</p>
+
 									<div style="height:6em"></div>
 									<p>This project was a cooperation with <a href="https://nora-1125.github.io/Website/">Nora</a>. Please check her website, too.</p>
 									<h3>License</h3>
